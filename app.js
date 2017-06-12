@@ -20,7 +20,17 @@ function populate () {
     choices.forEach((choice, i) => {
       let element = document.getElementById(`choice${i}`)
       element.innerHTML = choices[i]
+      guess(`btn${i}`, choices[i])
     })
+
+  }
+}
+
+const guess = (id, guess) => {
+  let button = document.getElementById(id)
+  button.onclick = () => {
+    quiz.guess(guess)
+    populate()
   }
 }
 
