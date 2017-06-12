@@ -8,8 +8,9 @@ var questions = [
 var quiz = new Quiz(questions)
 
 function populate () {
+  console.log(quiz.isEnded());
   if (quiz.isEnded()) {
-    // showScores()
+    showScores()
   } else {
       // show questions
     var element = document.getElementById('question')
@@ -26,7 +27,7 @@ function populate () {
   }
 }
 
-const guess = (id, guess) => {
+function guess (id, guess) {
   let button = document.getElementById(id)
   button.onclick = () => {
     quiz.guess(guess)
@@ -34,10 +35,17 @@ const guess = (id, guess) => {
   }
 }
 
-const showProgress = () => {
+function showProgress () {
   let footer = document.getElementById('progress')
   let index = quiz.questionIndex + 1
-  footer.innerHTML = `Question ${index} of ${questions.length}`
+  footer.innerHTML = `Question ${index} of ${quiz.questions.length}`
+}
+
+function showScores () {
+  var gameoverHTML = '<h1>Result</h1>'
+  gameoverHTML += `<h2 id='score'>Your scores: ${quiz.score}</h2>`
+  let element = document.getElementById('quiz')
+  element.innerHTML = gameoverHTML
 }
 
 populate()
