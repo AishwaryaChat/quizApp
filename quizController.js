@@ -4,15 +4,15 @@ function Quiz (questions) {
   this.questionIndex = 0
 }
 
-Quiz.prototype.getQuestionIndex = () => {
+Quiz.prototype.getQuestionIndex = function () {
   return this.questions[this.questionIndex]
 }
 
-Quiz.prototype.isEnded = () => {
+Quiz.prototype.isEnded = function () {
   return this.questions.length === this.questionIndex
 }
 
-Quiz.prototype.guess = (answer) => {
+Quiz.prototype.guess = function (answer) {
   this.questionIndex++
 
   if (this.getQuestionIndex().correctAnswer(answer)) this.score++
