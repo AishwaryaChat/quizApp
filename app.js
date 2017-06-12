@@ -21,8 +21,8 @@ function populate () {
       let element = document.getElementById(`choice${i}`)
       element.innerHTML = choices[i]
       guess(`btn${i}`, choices[i])
+      showProgress()
     })
-
   }
 }
 
@@ -32,6 +32,12 @@ const guess = (id, guess) => {
     quiz.guess(guess)
     populate()
   }
+}
+
+const showProgress = () => {
+  let footer = document.getElementById('progress')
+  let index = quiz.questionIndex + 1
+  footer.innerHTML = `Question ${index} of ${questions.length}`
 }
 
 populate()
